@@ -47,6 +47,6 @@
     "dimensions_ok": true
   },
   "verdict": "high-contrast",
-  "path": "examples/scene-cosmic-pyramid/preset-renders/stroke-clarity.txt",
+  "path": "/Users/johann/projects/ascii-art-pipeline/examples/scene-cosmic-pyramid/preset-renders/stroke-clarity.txt",
   "kind": "text"
 }

@@ -19,36 +19,43 @@ This scene stresses a different part of the pipeline:
 - atmospheric, punctuated sky texture
 - large dark-field / bright-structure contrast
 
-## Still-image commands used
+## Still-image commands used (via ascii-pipeline CLI)
+
+These commands use the pure-Python pipeline and are the recommended reproducible renders.
 
 ### Full-size dense reference
+
 ```bash
-/Users/johann/go/bin/ascii-image-converter source/cosmic-pyramid.jpg \
-  -d 192,96 \
-  -m '@$#MHAGXS532;:,. ' \
-  --save-txt dense-ref-192x96 \
-  --save-img dense-ref-192x96 \
-  --only-save
+ascii-pipeline render-image \
+  --input source/cosmic-pyramid.jpg \
+  --preset stroke-clarity \
+  --scale 4 \
+  --out preset-renders/fullsize-stroke-clarity.txt \
+  --preview-out preset-renders/fullsize-stroke-clarity.png \
+  --diagnostics-out preset-renders/fullsize-stroke-clarity.json
 ```
 
 ### Full-size D30
+
 ```bash
-/Users/johann/go/bin/ascii-image-converter source/cosmic-pyramid.jpg \
-  -d 192,96 \
-  -m ".,'`^\",:;Il!i><~+_-?][}{1)|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$" \
-  --save-txt d30-192x96 \
-  --save-img d30-192x96 \
-  --only-save
+ascii-pipeline render-image \
+  --input source/cosmic-pyramid.jpg \
+  --preset d30-dense \
+  --scale 4 \
+  --out preset-renders/fullsize-d30-dense.txt \
+  --preview-out preset-renders/fullsize-d30-dense.png \
+  --diagnostics-out preset-renders/fullsize-d30-dense.json
 ```
 
-### Collapsed baseline
+### Avatar baseline (48×24)
+
 ```bash
-/Users/johann/go/bin/ascii-image-converter source/cosmic-pyramid.jpg \
-  -d 48,24 \
-  -m '@$#MHAGXS532;:,. ' \
-  --save-txt dense-ref-48x24 \
-  --save-img dense-ref-48x24 \
-  --only-save
+ascii-pipeline render-image \
+  --input source/cosmic-pyramid.jpg \
+  --preset stroke-clarity \
+  --out preset-renders/stroke-clarity.txt \
+  --preview-out preset-renders/stroke-clarity.png \
+  --diagnostics-out preset-renders/stroke-clarity.json
 ```
 
 ## Still-image diagnostics summary

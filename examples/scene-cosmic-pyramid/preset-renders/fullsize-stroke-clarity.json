@@ -21,9 +21,9 @@
     "unique_glyphs_mean": 16.0,
     "unique_glyphs_min": 16,
     "unique_glyphs_max": 16,
-    "fill_ratio_mean": 0.996,
-    "heavy_ratio_mean": 0.4483,
-    "light_ratio_mean": 0.1976,
+    "fill_ratio_mean": 0.989,
+    "heavy_ratio_mean": 0.4554,
+    "light_ratio_mean": 0.1904,
     "braille_ratio_mean": 0.0,
     "motion_char_diff_mean": 0.0,
     "motion_char_diff_max": 0.0
@@ -33,20 +33,20 @@
     "state": null,
     "width": 192,
     "height": 96,
-    "nonspace_chars": 18358,
+    "nonspace_chars": 18230,
     "unique_glyphs": 16,
-    "fill_ratio": 0.996,
-    "heavy_ratio": 0.4483,
-    "light_ratio": 0.1976,
+    "fill_ratio": 0.989,
+    "heavy_ratio": 0.4554,
+    "light_ratio": 0.1904,
     "braille_ratio": 0.0,
     "edge_signature": [
-      "@@@@@@@@@@@@",
-      "@@@@@@@@@@@@",
+      "@@@@@@@@@$@@",
+      "@@@@$@@$@@@@",
       "@@@@@@@@@@@@"
     ],
     "dimensions_ok": true
   },
   "verdict": "high-contrast",
-  "path": "examples/scene-cosmic-pyramid/preset-renders/fullsize-stroke-clarity.txt",
+  "path": "/Users/johann/projects/ascii-art-pipeline/examples/scene-cosmic-pyramid/preset-renders/fullsize-stroke-clarity.txt",
   "kind": "text"
 }

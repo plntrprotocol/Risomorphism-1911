@@ -1,6 +1,6 @@
 # ASCII Art Pipeline
 
-A high-fidelity ASCII rendering foundation for still images, video, and Herm-style animated eikons. Built on `ascii-image-converter` with rigorous quality gates, integer-resolution scaling, and preset pipelines.
+A high-fidelity ASCII rendering foundation for still images, video, and Herm-style animated eikons. Implemented in pure Python with Pillow, NumPy, and rigorous quality gates, integer-resolution scaling, and preset pipelines.
 
 ## Features
 
@@ -9,21 +9,20 @@ A high-fidelity ASCII rendering foundation for still images, video, and Herm-sty
 - **Quality diagnostics**: unique glyphs, fill/heavy/light ratios, automatic verdict (high-contrast / low-contrast-garble-risk / braille-dominant)
 - **Preview rendering**: side-by-side PNGs for visual QA
 - **Still-image and video eikon workflows**
-- **No chafa dependency** for still images; standalone `ascii-image-converter` only
+- **Pure Python**: no external binaries; requires only Python 3.11+ and the PyPI dependencies listed below
 
 ## Installation & setup
 
-Requires Python 3.11+ and the `ascii-image-converter` binary.
+Python 3.11+ and the following PyPI packages are required:
 
 ```bash
-# Install ascii-image-converter (if not already)
-go install github.com/TheZoraiz/ascii-image-converter@latest
-
-# Ensure binary is on PATH
-export PATH=$PATH:~/go/bin
+# From the repository root
+pip install -e .
 ```
 
-Clone this repository and run commands via `python3 -m ascii_pipeline.cli`.
+This installs the `ascii-pipeline` CLI entry point along with Pillow and NumPy.
+
+Alternatively, ensure `Pillow>=10.0` and `numpy>=1.26` are installed in your environment; the `ascii-pipeline` module can be invoked as `python3 -m ascii_pipeline.cli`.
 
 ## Quick start
 
@@ -186,16 +185,17 @@ This repository is production-ready:
 - High-resolution PNG preview generation
 - Full-size eikon build pipeline (with optional 48×24 collapse)
 - Flagship still-image scene example (cosmic pyramid)
-- Animated scene eikon with 52 frames
+- Animated scene eikon with 144+ frames (smooth 48 fps optional)
 - Local HTML gallery with side-by-side comparisons
-- Focused test suite (10 tests, all passing)
+- Focused test suite (11 tests, all passing)
 - Dual-track publication: standalone CLI package + Hermes skill
+- **Pure-Python implementation** — no external binaries required
 
 See `docs/canonical-foundation.md` for frozen baseline decisions.
 
 ## Publication rule
 
-The `render-image` command uses only `ascii-image-converter`; **no `chafa` dependency**. Historical chafa comparisons remain in the gallery for diagnostic reference but are not the canonical path.
+The `render-image` command uses a **pure-Python implementation** (Pillow + NumPy); **no external binaries**. Historical chafa comparisons remain in the gallery for diagnostic reference but are not the canonical path.
 
 ## Planned next
 

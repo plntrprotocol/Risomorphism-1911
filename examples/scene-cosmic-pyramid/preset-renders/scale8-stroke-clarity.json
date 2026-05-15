@@ -23,7 +23,7 @@
     "unique_glyphs_max": 16,
     "fill_ratio_mean": 0.9798,
     "heavy_ratio_mean": 0.4616,
-    "light_ratio_mean": 0.1781,
+    "light_ratio_mean": 0.1782,
     "braille_ratio_mean": 0.0,
     "motion_char_diff_mean": 0.0,
     "motion_char_diff_max": 0.0
@@ -33,11 +33,11 @@
     "state": null,
     "width": 384,
     "height": 192,
-    "nonspace_chars": 72240,
+    "nonspace_chars": 72242,
     "unique_glyphs": 16,
     "fill_ratio": 0.9798,
     "heavy_ratio": 0.4616,
-    "light_ratio": 0.1781,
+    "light_ratio": 0.1782,
     "braille_ratio": 0.0,
     "edge_signature": [
       "@@@@@@@@@@@@",

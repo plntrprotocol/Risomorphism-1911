@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 import json
-import subprocess
 import tempfile
 from pathlib import Path
 
 from PIL import Image, ImageEnhance, ImageOps
 
 from .diagnostics import diagnose_path
-from .eikon import ASCII_IMAGE_CONVERTER, normalize_lines
-from . import downsampling
+from . import converter, downsampling
 from .presets import PRESETS, Preset
 from .preview import render_lines_to_image
+from .eikon import normalize_lines
 
 
 class RenderImageError(RuntimeError):
@@ -37,16 +36,6 @@ def _apply_preprocess(
     return working.convert("RGB")
 
 
-def _run_converter(image_path: Path, args: list[str]) -> list[str]:
-    if not ASCII_IMAGE_CONVERTER.exists():
-        raise FileNotFoundError(f"{ASCII_IMAGE_CONVERTER} not found")
-    cmd = [str(ASCII_IMAGE_CONVERTER), str(image_path), *args]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
-    if proc.returncode != 0:
-        raise RenderImageError(proc.stderr.strip() or proc.stdout.strip() or f"converter failed: {' '.join(cmd)}")
-    return proc.stdout.splitlines()
-
-
 def _render_with_preset(
     image_path: Path,
     preset: Preset,
@@ -55,8 +44,12 @@ def _render_with_preset(
     force_intermediate: tuple[int, int] | None = None,
 ) -> list[str]:
     target_width, target_height = force_grid if force_grid else preset.target
+
+    # Load preprocessed image
+    img = Image.open(image_path)
+
     if preset.braille:
-        lines = _run_converter(image_path, ["-d", f"{target_width},{target_height}", "-b", "--dither"])
+        lines = converter.convert_to_braille(img, target_width, target_height, dither=True)
         return normalize_lines(lines, target_width, target_height)
 
     charset = preset.charset
@@ -68,8 +61,8 @@ def _render_with_preset(
     ) if preset.intermediate_grid else (None, None)
 
     if preset.intermediate_grid:
-        # Use (possibly overridden) intermediate grid
-        lines = _run_converter(image_path, ["-d", f"{interm_width},{interm_height}", "-m", charset])
+        # Render at intermediate grid first
+        lines = converter.convert_to_ascii(img, interm_width, interm_height, charset)
         normalized = normalize_lines(lines, interm_width, interm_height)
         # Select downsampling method based on preset
         method = getattr(preset, "downsample", "majority")
@@ -84,7 +77,8 @@ def _render_with_preset(
         else:  # majority
             return downsampling.majority_vote(normalized, factor_y)
 
-    lines = _run_converter(image_path, ["-d", f"{target_width},{target_height}", "-m", charset])
+    # Direct render at target grid
+    lines = converter.convert_to_ascii(img, target_width, target_height, charset)
     return normalize_lines(lines, target_width, target_height)
 
 

@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import json
 import re
-import subprocess
 from collections import Counter
 from pathlib import Path
 from typing import Iterable
 
-ASCII_IMAGE_CONVERTER = Path('/Users/johann/go/bin/ascii-image-converter')
+from PIL import Image
+from . import converter
+
+
 D30_CHARSET = ".,'`^\",:;Il!i><~+_-?][}{1)|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 DENSE_REF_CHARSET = "@$#MHAGXS532;:,. "
 STATE_ORDER = ["idle", "thinking", "speaking"]
@@ -43,8 +45,10 @@ def collapse_lines(lines: list[str], target_width: int, target_height: int, *, m
     normalized = normalize_lines(lines, source_width, source_height)
 
     if method == "edge-aware":
+        from . import downsampling
         return downsampling.edge_aware_downsample(normalized, factor_y)
     elif method == "clahe":
+        from . import downsampling
         return downsampling.clahe_downsample(normalized, factor_y)
     else:  # majority
         out: list[str] = []
@@ -90,16 +94,10 @@ def render_png_to_ascii_lines(
     grid_height: int,
     charset: str,
 ) -> list[str]:
-    if not ASCII_IMAGE_CONVERTER.exists():
-        raise FileNotFoundError(f'{ASCII_IMAGE_CONVERTER} not found')
-    cmd = [
-        str(ASCII_IMAGE_CONVERTER),
-        str(png_path),
-        '-d', f'{grid_width},{grid_height}',
-        '-m', charset,
-    ]
-    proc = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    return normalize_lines(proc.stdout.splitlines(), grid_width, grid_height)
+    """Render a single PNG frame to ASCII lines using the pure-Python converter."""
+    img = Image.open(png_path)
+    lines = converter.convert_to_ascii(img, grid_width, grid_height, charset)
+    return normalize_lines(lines, grid_width, grid_height)
 
 
 def write_eikon(

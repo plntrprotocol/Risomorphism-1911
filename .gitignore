@@ -59,3 +59,6 @@ htmlcov/
 # Local overrides
 !.gitignore
 # Keep the actual pipeline code and examples
+
+# Intermediate render artifacts
+tmp/
