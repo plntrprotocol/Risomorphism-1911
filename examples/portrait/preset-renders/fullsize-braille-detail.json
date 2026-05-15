@@ -1,0 +1,52 @@
+{
+  "frames": 1,
+  "states": {
+    "unknown": 1
+  },
+  "dimensions": {
+    "widths": [
+      192
+    ],
+    "heights": [
+      96
+    ],
+    "consistent": true,
+    "expected": [
+      192,
+      96
+    ],
+    "all_match_expected": true
+  },
+  "aggregate": {
+    "unique_glyphs_mean": 230.0,
+    "unique_glyphs_min": 230,
+    "unique_glyphs_max": 230,
+    "fill_ratio_mean": 1.0,
+    "heavy_ratio_mean": 0.0,
+    "light_ratio_mean": 0.0,
+    "braille_ratio_mean": 1.0,
+    "motion_char_diff_mean": 0.0,
+    "motion_char_diff_max": 0.0
+  },
+  "sample_frame": {
+    "index": 0,
+    "state": null,
+    "width": 192,
+    "height": 96,
+    "nonspace_chars": 18432,
+    "unique_glyphs": 230,
+    "fill_ratio": 1.0,
+    "heavy_ratio": 0.0,
+    "light_ratio": 0.0,
+    "braille_ratio": 1.0,
+    "edge_signature": [
+      "\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800",
+      "\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800\u2800",
+      "\u2800\u2800\u2800\u2800\u2800\u2800\u2880\u2820\u2800\u2800\u2800\u2800"
+    ],
+    "dimensions_ok": true
+  },
+  "verdict": "braille-dominant",
+  "path": "/Users/johann/projects/ascii-art-pipeline/examples/portrait/preset-renders/fullsize-braille-detail.txt",
+  "kind": "text"
+}

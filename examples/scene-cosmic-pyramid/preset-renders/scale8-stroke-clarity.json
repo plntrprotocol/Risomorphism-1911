@@ -1,0 +1,52 @@
+{
+  "frames": 1,
+  "states": {
+    "unknown": 1
+  },
+  "dimensions": {
+    "widths": [
+      384
+    ],
+    "heights": [
+      192
+    ],
+    "consistent": true,
+    "expected": [
+      384,
+      192
+    ],
+    "all_match_expected": true
+  },
+  "aggregate": {
+    "unique_glyphs_mean": 16.0,
+    "unique_glyphs_min": 16,
+    "unique_glyphs_max": 16,
+    "fill_ratio_mean": 0.9798,
+    "heavy_ratio_mean": 0.4616,
+    "light_ratio_mean": 0.1781,
+    "braille_ratio_mean": 0.0,
+    "motion_char_diff_mean": 0.0,
+    "motion_char_diff_max": 0.0
+  },
+  "sample_frame": {
+    "index": 0,
+    "state": null,
+    "width": 384,
+    "height": 192,
+    "nonspace_chars": 72240,
+    "unique_glyphs": 16,
+    "fill_ratio": 0.9798,
+    "heavy_ratio": 0.4616,
+    "light_ratio": 0.1781,
+    "braille_ratio": 0.0,
+    "edge_signature": [
+      "@@@@@@@@@@@@",
+      "@@@@@@@@@@@@",
+      "@@@@@@@@@A$@"
+    ],
+    "dimensions_ok": true
+  },
+  "verdict": "high-contrast",
+  "path": "/Users/johann/projects/ascii-art-pipeline/examples/scene-cosmic-pyramid/preset-renders/scale8-stroke-clarity.txt",
+  "kind": "text"
+}

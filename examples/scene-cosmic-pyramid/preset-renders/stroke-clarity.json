@@ -1,0 +1,52 @@
+{
+  "frames": 1,
+  "states": {
+    "unknown": 1
+  },
+  "dimensions": {
+    "widths": [
+      48
+    ],
+    "heights": [
+      24
+    ],
+    "consistent": true,
+    "expected": [
+      48,
+      24
+    ],
+    "all_match_expected": true
+  },
+  "aggregate": {
+    "unique_glyphs_mean": 16.0,
+    "unique_glyphs_min": 16,
+    "unique_glyphs_max": 16,
+    "fill_ratio_mean": 0.9991,
+    "heavy_ratio_mean": 0.444,
+    "light_ratio_mean": 0.1981,
+    "braille_ratio_mean": 0.0,
+    "motion_char_diff_mean": 0.0,
+    "motion_char_diff_max": 0.0
+  },
+  "sample_frame": {
+    "index": 0,
+    "state": null,
+    "width": 48,
+    "height": 24,
+    "nonspace_chars": 1151,
+    "unique_glyphs": 16,
+    "fill_ratio": 0.9991,
+    "heavy_ratio": 0.444,
+    "light_ratio": 0.1981,
+    "braille_ratio": 0.0,
+    "edge_signature": [
+      "@@@@@@@@@$@@",
+      "@@@@@@$$@$@@",
+      "@@@@@$#$@@@@"
+    ],
+    "dimensions_ok": true
+  },
+  "verdict": "high-contrast",
+  "path": "examples/scene-cosmic-pyramid/preset-renders/stroke-clarity.txt",
+  "kind": "text"
+}

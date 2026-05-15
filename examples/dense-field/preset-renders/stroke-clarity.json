@@ -1,0 +1,52 @@
+{
+  "frames": 1,
+  "states": {
+    "unknown": 1
+  },
+  "dimensions": {
+    "widths": [
+      48
+    ],
+    "heights": [
+      24
+    ],
+    "consistent": true,
+    "expected": [
+      48,
+      24
+    ],
+    "all_match_expected": true
+  },
+  "aggregate": {
+    "unique_glyphs_mean": 6.0,
+    "unique_glyphs_min": 6,
+    "unique_glyphs_max": 6,
+    "fill_ratio_mean": 1.0,
+    "heavy_ratio_mean": 0.6259,
+    "light_ratio_mean": 0.0,
+    "braille_ratio_mean": 0.0,
+    "motion_char_diff_mean": 0.0,
+    "motion_char_diff_max": 0.0
+  },
+  "sample_frame": {
+    "index": 0,
+    "state": null,
+    "width": 48,
+    "height": 24,
+    "nonspace_chars": 1152,
+    "unique_glyphs": 6,
+    "fill_ratio": 1.0,
+    "heavy_ratio": 0.6259,
+    "light_ratio": 0.0,
+    "braille_ratio": 0.0,
+    "edge_signature": [
+      "#M#$####$$$#",
+      "$MMMMMMMMMMM",
+      "$HHHHHHHHHHH"
+    ],
+    "dimensions_ok": true
+  },
+  "verdict": "high-contrast",
+  "path": "/Users/johann/projects/ascii-art-pipeline/examples/dense-field/preset-renders/stroke-clarity.txt",
+  "kind": "text"
+}

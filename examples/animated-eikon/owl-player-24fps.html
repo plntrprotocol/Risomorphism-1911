@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Animated Eikon Player — owl_ascii (24 fps)</title>
+  <style>
+    body { background:#111; color:#eee; font:18px Menlo,monospace; margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; }
+    #eikon-canvas { background:#000; border:2px solid #333; image-rendering:pixelated; }
+    .controls { margin-top:12px; display:flex; gap:8px; align-items:center; }
+    button { background:#333; color:#eee; border:1px solid #555; padding:6px 12px; cursor:pointer; font:14px Menlo; }
+    button:hover { background:#444; }
+    .state-tag { padding:4px 8px; background:#222; border-radius:4px; font-size:12px; color:#0ff; }
+  </style>
+</head>
+<body>
+  <h2>Animated Eikon — owl_ascii (24 fps, smooth motion)</h2>
+  <pre id="eikon-canvas"></pre>
+  <div class="controls">
+    <button id="play">▶ Play</button>
+    <button id="pause">⏸ Pause</button>
+    <button id="step">⏭ Step</button>
+    <span class="state-tag" id="state-tag">state: —</span>
+    <span id="frame-counter">frame: 0 / 0</span>
+  </div>
+
+  <script>
+    const EIKON_PATH = 'owl-animated-24fps.eikon';  // 24fps version
+    let eikon = null;
+    let currentFrame = 0;
+    let playing = false;
+    let interval = null;
+    const fps = 24;  // native frame rate
+
+    async function loadEikon() {
+      const resp = await fetch(EIKON_PATH);
+      const lines = (await resp.text()).split('\n');
+      // Parse newline-delimited JSON lines
+      const meta = JSON.parse(lines[0]);
+      const statesMeta = JSON.parse(lines[1]);
+      const framesMeta = JSON.parse(lines[2]);
+      const frames = [];
+      for (let i = 0; i < framesMeta.total; i++) {
+        const frameLine = lines[3 + i];
+        const obj = JSON.parse(frameLine);
+        frames.push(obj.g);
+      }
+      eikon = { meta, statesMeta, framesMeta, frames };
+      document.getElementById('frame-counter').textContent =
+        `frame: 0 / ${frames.length}`;
+      renderFrame(0);
+    }
+
+    function renderFrame(idx) {
+      const canvas = document.getElementById('eikon-canvas');
+      canvas.textContent = eikon.frames[idx].join('\n');
+      currentFrame = idx;
+      document.getElementById('frame-counter').textContent =
+        `frame: ${idx} / ${eikon.frames.length - 1}`;
+      const range = eikon.framesMeta.ranges.find(r => idx >= r.b && idx < r.b + r.c);
+      document.getElementById('state-tag').textContent = 'state: ' + (range?.s || '—');
+    }
+
+    function nextFrame() {
+      const next = (currentFrame + 1) % eikon.frames.length;
+      renderFrame(next);
+    }
+
+    document.getElementById('play').onclick = () => {
+      if (playing) return;
+      playing = true;
+      interval = setInterval(nextFrame, 1000 / fps);
+    };
+    document.getElementById('pause').onclick = () => {
+      playing = false;
+      clearInterval(interval);
+    };
+    document.getElementById('step').onclick = () => {
+      nextFrame();
+    };
+
+    loadEikon();
+  </script>
+</body>
+</html>

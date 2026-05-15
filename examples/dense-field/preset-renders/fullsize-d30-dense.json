@@ -1,0 +1,52 @@
+{
+  "frames": 1,
+  "states": {
+    "unknown": 1
+  },
+  "dimensions": {
+    "widths": [
+      192
+    ],
+    "heights": [
+      96
+    ],
+    "consistent": true,
+    "expected": [
+      192,
+      96
+    ],
+    "all_match_expected": true
+  },
+  "aggregate": {
+    "unique_glyphs_mean": 67.0,
+    "unique_glyphs_min": 67,
+    "unique_glyphs_max": 67,
+    "fill_ratio_mean": 1.0,
+    "heavy_ratio_mean": 0.1582,
+    "light_ratio_mean": 0.4005,
+    "braille_ratio_mean": 0.0,
+    "motion_char_diff_mean": 0.0,
+    "motion_char_diff_max": 0.0
+  },
+  "sample_frame": {
+    "index": 0,
+    "state": null,
+    "width": 192,
+    "height": 96,
+    "nonspace_chars": 18432,
+    "unique_glyphs": 67,
+    "fill_ratio": 1.0,
+    "heavy_ratio": 0.1582,
+    "light_ratio": 0.4005,
+    "braille_ratio": 0.0,
+    "edge_signature": [
+      "............",
+      "............",
+      "............"
+    ],
+    "dimensions_ok": true
+  },
+  "verdict": "low-contrast-garble-risk",
+  "path": "/Users/johann/projects/ascii-art-pipeline/examples/dense-field/preset-renders/fullsize-d30-dense.txt",
+  "kind": "text"
+}

@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ASCII Art Pipeline Gallery</title>
+  <style>
+    :root {
+      --bg: #0e1016;
+      --panel: #151924;
+      --ink: #f2ead8;
+      --muted: #b8b0a1;
+      --line: #2a3143;
+      --accent: #7ec8ff;
+      --danger: #ff7b7b;
+      --good: #8fd6a3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    h1, h2 { margin: 0 0 12px; }
+    p, li { color: var(--muted); line-height: 1.5; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #0b0d12;
+    }
+    code { color: var(--ink); }
+    .good { color: var(--good); }
+    .bad { color: var(--danger); }
+    .accent { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>ASCII Art Pipeline Gallery</h1>
+    <p>
+      First live proof surface for the standalone repo. This gallery now shows the exact problem we care about:
+      <span class="bad">mathematically dense but unreadable output</span> versus
+      <span class="good">clear, high-contrast character silhouette</span>.
+    </p>
+    <p>
+      Generated with the current repo commands:
+      <code>ascii-pipeline diagnose</code> and <code>ascii-pipeline render-preview</code>.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Clarity comparison board</h2>
+    <p>
+      Side-by-side reference: known-good <span class="accent">chafa</span> void-watcher versus failure-mode
+      <span class="bad">v6 factor-16 exact-integer</span> void-watcher.
+    </p>
+    <img src="void-watcher-comparison-board.png" alt="Void watcher comparison board">
+  </div>
+
+  <div class="panel">
+    <h2>Full-size scene showcase: cosmic pyramid</h2>
+    <p>
+      A square illustration stress-test: hard geometric pyramid silhouette, tiny robed figure, and dense stippled nebula field.
+      This example demonstrates why <span class="accent">full-size output should remain first-class</span> for showcase work.
+    </p>
+    <img src="fullsize/cosmic-pyramid-board.png" alt="Cosmic pyramid full-size comparison board">
+  </div>
+
+  <div class="panel">
+    <h2>Animated scene eikon: cosmic pyramid</h2>
+    <p>
+      The still image now has a motion pass: subtle zoom drift, apex-star flare, nebula breathing, and sparse star-field twinkle.
+      The goal is <span class="good">controlled atmospheric change</span>, not noisy flicker.
+    </p>
+    <img src="fullsize/cosmic-pyramid-animated-preview.gif" alt="Cosmic pyramid animated ASCII preview">
+    <p>
+      Supporting motion board: <code>gallery/fullsize/cosmic-pyramid-animated-3frame-board.png</code>
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Video-derived animated eikon: owl_ascii</h2>
+    <p>
+      Real motion source: <code>owl_ascii.MP4</code> (960×960, 12 s, 24 fps). Extracted at 12 fps, converted to
+      192×96 ASCII with <span class="accent">dense-ref</span>, auto state clustering by per-frame delta.
+      States: idle (33%), thinking (33%), speaking (34%) — balanced motion cycle.
+    </p>
+    <iframe src="../examples/animated-eikon/owl-player.html"
+            width="100%" height="480"
+            style="border:1px solid var(--line); border-radius:12px; background:#000;"
+            title="Owl ASCII animated eikon player">
+    </iframe>
+    <p style="margin-top:8px; font-size:12px;">
+      Controls: ▶ Play / ⏸ Pause / ⏭ Step. Motion derived directly from video frame differencing.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Published still-image preset surface</h2>
+    <p>
+      First-class <code>render-image</code> comparison board using the public preset contract.
+      This path is <span class="accent">ascii-image-converter only</span> — no chafa dependency in the published still-image CLI.
+    </p>
+    <img src="../examples/scene-cosmic-pyramid/preset-renders/preset-board.png" alt="Cosmic pyramid render-image preset comparison board">
+  </div>
+
+  <div class="panel">
+    <h2>Portrait showcase — D34 alchemist-robe.observatory</h2>
+    <p>
+      Square portrait (1:1) composition rendered across multiple presets. Source from hooded‑ouroboros‑collection.
+      <span class="accent">stroke-clarity</span> delivers crisp silhouette; <span class="accent">d30-dense</span> adds cyber‑noir texture density.
+    </p>
+    <div class="grid">
+      <div class="panel" style="margin:0; background:transparent; border:none; padding:0;">
+        <img src="../examples/portrait/preset-renders/fullsize-stroke-clarity.png" alt="Portrait stroke-clarity fullsize" style="border-radius:8px;">
+        <p style="text-align:center; margin-top:6px; font-size:12px;">stroke-clarity 192×96</p>
+      </div>
+      <div class="panel" style="margin:0; background:transparent; border:none; padding:0;">
+        <img src="../examples/portrait/preset-renders/fullsize-d30-dense.png" alt="Portrait d30-dense fullsize" style="border-radius:8px;">
+        <p style="text-align:center; margin-top:6px; font-size:12px;">d30-dense 192×96</p>
+      </div>
+      <div class="panel" style="margin:0; background:transparent; border:none; padding:0;">
+        <img src="../examples/portrait/preset-renders/braille-detail.png" alt="Portrait braille-detail" style="border-radius:8px;">
+        <p style="text-align:center; margin-top:6px; font-size:12px;">braille-detail 48×24</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Dense-field showcase — D30 ASCII complex</h2>
+    <p>
+      Wide, texture‑rich composition (asymmetric) testing the upper bounds of glyph density. Source: <code>D30-ascii-complex-preview.png</code>.
+      Demonstrates how <span class="accent">d30-dense</span> preserves local detail in high‑entropy fields.
+    </p>
+    <div class="grid">
+      <div class="panel" style="margin:0; background:transparent; border:none; padding:0;">
+        <img src="../examples/dense-field/preset-renders/fullsize-stroke-clarity.png" alt="Dense-field stroke-clarity" style="border-radius:8px;">
+        <p style="text-align:center; margin-top:6px; font-size:12px;">stroke-clarity 192×96</p>
+      </div>
+      <div class="panel" style="margin:0; background:transparent; border:none; padding:0;">
+        <img src="../examples/dense-field/preset-renders/fullsize-d30-dense.png" alt="Dense-field d30-dense" style="border-radius:8px;">
+        <p style="text-align:center; margin-top:6px; font-size:12px;">d30-dense 192×96</p>
+      </div>
+      <div class="panel" style="margin:0; background:transparent; border:none; padding:0;">
+        <img src="../examples/dense-field/preset-renders/braille-detail.png" alt="Dense-field braille-detail" style="border-radius:8px;">
+        <p style="text-align:center; margin-top:6px; font-size:12px;">braille-detail 48×24</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Known-good reference</h2>
+      <p>Source: <code>video_derived_chafa/void-watcher.eikon</code><br><span class="good">Verdict: high-contrast</span></p>
+      <img src="void-watcher-chafa-preview.png" alt="Void watcher chafa preview">
+    </div>
+
+    <div class="panel">
+      <h2>Failure mode</h2>
+      <p>Source: <code>video_derived_ascii_skill_v6_factor16/void-watcher.eikon</code><br><span class="bad">Verdict: low-contrast-garble-risk</span></p>
+      <img src="void-watcher-v6-preview.png" alt="Void watcher v6 preview">
+    </div>
+
+    <div class="panel">
+      <h2>Production museah baseline</h2>
+      <p>Source: <code>video-derived/museah.eikon</code><br><span class="good">Verdict: high-contrast</span></p>
+      <img src="museah-preview.png" alt="Museah preview">
+    </div>
+
+    <div class="panel">
+      <h2>Cosmic pyramid — dense full-size winner</h2>
+      <p>Source: <code>examples/scene-cosmic-pyramid/dense-ref-192x96</code><br><span class="good">Verdict: high-contrast</span></p>
+      <img src="../examples/scene-cosmic-pyramid/dense-ref-192x96/cosmic-pyramid-ascii-art.png" alt="Cosmic pyramid dense full-size preview">
+    </div>
+
+    <div class="panel">
+      <h2>Cosmic pyramid — atmospheric D30 variant</h2>
+      <p>Source: <code>examples/scene-cosmic-pyramid/d30-192x96</code><br><span class="accent">Visually strong despite portrait-style heuristic warning</span></p>
+      <img src="../examples/scene-cosmic-pyramid/d30-192x96/cosmic-pyramid-ascii-art.png" alt="Cosmic pyramid D30 full-size preview">
+    </div>
+
+    <div class="panel">
+      <h2>Cosmic pyramid — collapsed fallback</h2>
+      <p>Source: <code>examples/scene-cosmic-pyramid/dense-ref-48x24</code><br><span class="bad">Useful derivative, but not the canonical scene master</span></p>
+      <img src="../examples/scene-cosmic-pyramid/dense-ref-48x24/cosmic-pyramid-ascii-art.png" alt="Cosmic pyramid collapsed preview">
+    </div>
+  </div>
+</body>
+</html>
