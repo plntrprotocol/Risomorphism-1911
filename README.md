@@ -44,7 +44,7 @@ ascii-pipeline render-image --input photo.jpg --preset stroke-clarity --out out.
 | Preset | Charset | Target | Intermediate? | Best for |
 |--------|---------|--------|---------------|----------|
 | `stroke-clarity` | `DENSE_REF_CHARSET` (12 glyphs `@$#MHAGXS532;:,. `) | 48×24 | None | High-contrast silhouettes; safe default |
-| `d30-dense` | `D30_CHARSET` (68 glyphs, extended D30 palette) | 48×24 | 384×192 → block collapse | Dense texture, D30 HUD aesthetic |
+| `d30-dense` | `D30_CHARSET` (68 glyphs, extended D30 palette) | 48×24 | 384×192 → edge‑aware downsample | Dense texture, D30 HUD aesthetic — **uses Laplacian‑weighted block reduction for crisp edges** |
 | `braille-detail` | Unicode Braille (U+2800–U+28FF) | 48×24 | None (Floyd–Steinberg dither) | Maximum detail, halftone style |
 | `eikon-motion` | D30 charset | 48×24 | 384×192 block collapse | Video → animated eikon (via `build-eikon`) |
 
